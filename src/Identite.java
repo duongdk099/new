@@ -1,7 +1,10 @@
 
 public class Identite {
-	// NIP (Numéro d’Identification Personnel)
+	// NIP (Numï¿½ro dï¿½Identification Personnel)
 	private int nip;
 	private String nom;
 	private String prenom;
+	public  Identite() {
+		
+	}
 }
