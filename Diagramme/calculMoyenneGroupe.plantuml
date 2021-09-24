@@ -1,8 +1,23 @@
 @startuml
-actor g
-g->Groupe : getFormation()
-Groupe -> Formation : getLmatiere()
-Groupe -> Formation : coeffMatiere()
-g->Groupe : getEtudi()
-g->Groupe : moyenneMat()
+title Calcul moyenne matiere de groupe etudiant a formation
+participant "g : Groupe" as groupe
+participant "e : Etudiant" as etudiant
+[-> groupe : calcMoyGroupe()
+activate groupe
+    groupe -> etudiant : getEtud()
+    activate etudiant
+    groupe <-- etudiant : Etud
+    deactivate etudiant
+
+    loop indice i
+    groupe -> etudiant : calculerMoyenneGe()
+    activate etudiant
+    groupe <-- etudiant : moyenne
+    groupe -> groupe : calcMoyGr()
+    deactivate etudiant
+    end
+
+[<-- groupe : moyenneGroupe
+deactivate groupe
+
 @enduml
