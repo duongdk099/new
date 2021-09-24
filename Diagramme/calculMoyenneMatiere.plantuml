@@ -1,7 +1,23 @@
 @startuml
-actor e
-e->Etudiant : getFormation()
-Etudiant -> Formation : getLmatiere()
-Etudiant -> Formation : coeffMatiere()
-e->Etudiant : moyenneMat()
+title calculerMoyenneGe
+participant "e : Etudiant" as etudiant
+participant "f : Formation" as formation
+[-> etudiant : calculerMoyenneGe()
+activate etudiant
+    etudiant -> formation : getMatieres()
+    activate formation
+    etudiant <-- formation : matieres
+    deactivate formation
+
+    loop indice i
+    etudiant -> formation : coeffMatiere()
+    activate formation
+    etudiant <-- formation : coefficient
+    etudiant -> etudiant : calculerMoyenneMat()
+    deactivate formation
+    end
+    
+[<-- etudiant : moyenne
+deactivate etudiant
+
 @enduml
