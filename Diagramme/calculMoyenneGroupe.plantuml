@@ -1,0 +1,8 @@
+@startuml
+actor g
+g->Groupe : getFormation()
+Groupe -> Formation : getLmatiere()
+Groupe -> Formation : coeffMatiere()
+g->Groupe : getEtudi()
+g->Groupe : moyenneMat()
+@enduml
