@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.* ;
+package exceptions ;
 
 public class Etudiant {
 
@@ -12,7 +13,7 @@ public class Etudiant {
     private HashMap<String, ArrayList<Float>> notes ;
 
     /**
-     * Constructeurs
+     * Constructeur
      */
 
     /**
@@ -22,16 +23,6 @@ public class Etudiant {
      */
     public Etudiant(Identite i, Formation f) {
         this.id = i ;
-        this.formati = f ;
-        this.notes = new HashMap<String, ArrayList<Float>>() ;
-    }
-
-    /**
-     * Constructeur ou l'identite n existe pas
-     * @param f
-     */
-    public Etudiant(String nip, String n, String p, Formation f) {
-        this.id = new Identite(nip, n, p) ;
         this.formati = f ;
         this.notes = new HashMap<String, ArrayList<Float>>() ;
     }
@@ -81,14 +72,14 @@ public class Etudiant {
                 '}';
     }
 
-    public void ajouterNote(String m, Float n) throws DeviseException {
+    public void ajouterNote(String m, Float n) throws DeviseException, DeviseExcep {
         if (n>20 || n<0) {
             throw new DeviseException() ;
         } else {
             if (! this.formati.getMatieres.containsKey(m)) {
                 throw new DeviseExcep() ;
             } else {
-
+                this.notes.get(m).add(n) ;
             }
         }
     }
