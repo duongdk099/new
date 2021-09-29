@@ -18,6 +18,7 @@ public class Etudiant {
 
     /**
      * Constructeur ou l'identite existe deja
+     *
      * @param i identite de l'etudiant
      * @param f formation de l'etudiant
      */
@@ -36,6 +37,8 @@ public class Etudiant {
      */
 
     /**
+     * methode getID
+     *
      * @return identite de l etudiant
      */
     public Identite getId() {
@@ -43,6 +46,8 @@ public class Etudiant {
     }
 
     /**
+     * methode getFormati
+     *
      * @return formation de l etudiant
      */
     public Formation getFormati() {
@@ -50,6 +55,8 @@ public class Etudiant {
     }
 
     /**
+     * methode getNotes
+     *
      * @return notes de l etudiant
      */
     public HashMap<String, ArrayList<Float>> getNotes() {
@@ -61,6 +68,8 @@ public class Etudiant {
      */
 
     /**
+     * methode toString
+     *
      * @return phrase decrivant l etudiant
      */
     @Override
@@ -72,6 +81,14 @@ public class Etudiant {
                 '}';
     }
 
+    /**
+     * methode ajouterNote permet d ajouter une note a un etudiant dans une matiere donnee
+     *
+     * @param m nom de la matiere
+     * @param n note a ajouter
+     * @throws DeviseException leve l exception si la note n est pas entre 0 et 20
+     * @throws DeviseExcep leve l exception si la matiere n est pas dans la formation
+     */
     public void ajouterNote(String m, Float n) throws DeviseException, DeviseExcep {
         if (n>20 || n<0) {
             throw new DeviseException() ;
@@ -84,11 +101,40 @@ public class Etudiant {
         }
     }
 
+    /**
+     * methode calculerMoyenneMat
+     *
+     * @param m nom matiere
+     * @return moyenne de la matiere
+     * @throws DeviseExcep leve une exception si la matiere ne fait pas parti de la formation
+     */
+    public Float calculerMoyenneMat(String m) throws DeviseExcep{
+        Float res = 0.0f;
+        Float resultat ;
+        if (! this.formati.getMatieres.containsKey(m)) {
+            throw new DeviseExcep() ;
+        } else {
+            int total = this.notes.get(m).size();
+            for (int i=0 ; i<total ; i++) {
+                res += this.notes.get(m).get(i) ;
+            }
+            resultat = res/total ;
+        }
+        return resultat ;
+    }
+
+    public Float
 
     /**
      * equals et hashCode
      */
 
+    /**
+     * methode equals
+     *
+     * @param o est ce que c est egal a l objet o
+     * @return vrai si c est egal sinon faux
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,6 +143,11 @@ public class Etudiant {
         return Objects.equals(id, etudiant.id) && Objects.equals(formati, etudiant.formati) && Objects.equals(notes, etudiant.notes);
     }
 
+    /**
+     * metjode hashCode
+     *
+     * @return entier
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, formati, notes);
