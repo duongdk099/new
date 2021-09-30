@@ -123,7 +123,27 @@ public class Etudiant {
         return resultat ;
     }
 
-    public Float
+    /**
+     * methode calculerMoyenneGe
+     *
+     * @return moyenne de l etudiant
+     */
+    public Float calculerMoyenneGe() {
+        Float res = 0.0f ;
+        int total =0 ;
+        Float moyenne ;
+        Set<String> mati = new HashSet<String>() ;
+        mati = this.formati.getMatieres.keySet() ;
+        Iterator<String> i = mati.iterator() ;
+        while (i.hasNext()) {
+            String s = i.next() ;
+            Float no = calculerMoyenneMat(s) ;
+            res += no * this.formati.coeffMatiere(s) ;
+            total += this.formati.coeffMatiere(s);
+        }
+        moyenne = res/total ;
+        return moyenne ;
+    }
 
     /**
      * equals et hashCode
