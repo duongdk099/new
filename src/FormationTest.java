@@ -1,6 +1,5 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 import java.util.*;
 
 class FormationTest {
@@ -35,8 +34,8 @@ class FormationTest {
         HashMap<String,Integer> mat = new HashMap<>();
         Formation f = new Formation("123",mat);
         f.ajouterMatiere("Math",123);
-        assertEquals(true,f.checkMatiere("Math"),"Math must been here");
-        assertEquals(123,f.getCoef("Math"),"It must be 123 coef");
+        assertEquals("Math must been here", true, f.checkMatiere("Math"));
+        assertEquals("It must be 123 coef",123,f.getCoef("Math"));
     }
 
     @Test
@@ -45,6 +44,6 @@ class FormationTest {
         Formation f = new Formation("123",mat);
         f.ajouterMatiere("Math",123);
         f.supprimerMatiere("Math");
-        assertEquals(false,f.checkMatiere("Math"),"Math has been deleted");
+        assertEquals("Math has been deleted", false, f.checkMatiere("Math"));
     }
 }
