@@ -1,7 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.* ;
-package exceptions ;
-
+package exceptions;
 public class Etudiant {
 
     /**
@@ -93,7 +92,7 @@ public class Etudiant {
         if (n>20 || n<0) {
             throw new DeviseException() ;
         } else {
-            if (! this.formati.getMatieres.containsKey(m)) {
+            if (! this.formati.getMatieres().containsKey(m)) {
                 throw new DeviseExcep() ;
             } else {
                 this.notes.get(m).add(n) ;
@@ -111,7 +110,7 @@ public class Etudiant {
     public Float calculerMoyenneMat(String m) throws DeviseExcep{
         Float res = 0.0f;
         Float resultat ;
-        if (! this.formati.getMatieres.containsKey(m)) {
+        if (! this.formati.getMatieres().containsKey(m)) {
             throw new DeviseExcep() ;
         } else {
             int total = this.notes.get(m).size();
@@ -133,13 +132,13 @@ public class Etudiant {
         int total =0 ;
         Float moyenne ;
         Set<String> mati = new HashSet<String>() ;
-        mati = this.formati.getMatieres.keySet() ;
+        mati = this.formati.getMatieres().keySet() ;
         Iterator<String> i = mati.iterator() ;
         while (i.hasNext()) {
             String s = i.next() ;
             Float no = calculerMoyenneMat(s) ;
-            res += no * this.formati.coeffMatiere(s) ;
-            total += this.formati.coeffMatiere(s);
+            res += no * this.formati.getCoef(s) ;
+            total += this.formati.getCoef(s);
         }
         moyenne = res/total ;
         return moyenne ;

@@ -1,4 +1,3 @@
-package nikel;
 import java.util.*;
 public class Formation {
 
@@ -14,12 +13,8 @@ public class Formation {
         return id;
     }
 
-    public String getMatieres() {
-        String res="";
-        for ( String key : this.matieres.keySet() ) {
-            res+=key;
-        }
-        return res;
+    public HashMap<String,Integer> getMatieres() {
+        return this.matieres;
     }
 
     @Override
