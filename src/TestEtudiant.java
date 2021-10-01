@@ -57,7 +57,7 @@ class TestEtudiant {
     @Test
     public void ajouterNoteInf() {
         Float n = -5.0f ;
-        e.ajouterNote("programmation",n) ;
+        e.ajouterNote("programmation",-5.0f) ;
         assertFalse("-5 ne doit pas etre dans la liste des notes car la note est en dessous de 0",e.getNotes().get("programmation").contains(-5.0f)) ;
     }
 
