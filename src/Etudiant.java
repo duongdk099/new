@@ -1,7 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.* ;
-package exceptions;
-public class Etudiant {
+
+public class  Etudiant {
 
     /**
      * Attributs
@@ -88,6 +88,7 @@ public class Etudiant {
      * @throws DeviseException leve l exception si la note n est pas entre 0 et 20
      * @throws DeviseExcep leve l exception si la matiere n est pas dans la formation
      */
+
     public void ajouterNote(String m, Float n) throws DeviseException, DeviseExcep {
         if (n>20 || n<0) {
             throw new DeviseException() ;
@@ -161,7 +162,6 @@ public class Etudiant {
         Etudiant etudiant = (Etudiant) o;
         return Objects.equals(id, etudiant.id) && Objects.equals(formati, etudiant.formati) && Objects.equals(notes, etudiant.notes);
     }
-
     /**
      * metjode hashCode
      *
@@ -171,4 +171,5 @@ public class Etudiant {
     public int hashCode() {
         return Objects.hash(id, formati, notes);
     }
+
 }

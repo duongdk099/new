@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -28,8 +29,12 @@ class TestEtudiant {
     /**
      * ajout de matieres a la formation
      */
-    f.ajouterMatiere("programmation",4) ;
-    f.ajouterMatiere("reseaux",2) ;
+    @Before
+    public void ajouter(){
+        f.ajouterMatiere("programmation",4) ;
+        f.ajouterMatiere("reseaux",2) ;
+    }
+
 
     /**
      * Tests
@@ -38,6 +43,7 @@ class TestEtudiant {
     /**
      * Tests ajouterNote
      */
+
 
     // test normal
     @Test
